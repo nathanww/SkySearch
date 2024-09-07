@@ -1,0 +1,34 @@
+ffmpeg -i $(yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=sQxL8t0gtu8" -vframes 1 output.png") -vframes 1 output.png)
+
+ffmpeg -i "$(yt-dlp --update-to-latest-version --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8)" -vframes 1 output.png
+
+
+STREAM_URL=$(yt-dlp  --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8)
+ffmpeg -i "$STREAM_URL" -vframes 1 output.png
+
+for /f "delims=" %a in ('yt-dlp --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8') do ffmpeg -y -i "%a" -f 1 output.png
+
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8') do ffmpeg -y -i "%a" -frames:v 1 output.png
+
+
+for /f "delims=" %a in ('yt-dlp --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8') do ffmpeg -y -i "%a" -vf fps=1 output_%03d.png
+
+THis command successfully captures 1 every second
+
+for /f "delims=" %a in ('yt-dlp --skip-download --get-url https://www.youtube.com/watch?v=sQxL8t0gtu8') do ffmpeg -y -i "%a" -vf fps=1 output_%03d.png
+
+
+Another one in Chicago
+https://www.youtube.com/watch?v=-d4rS1lFzTQ
+for /f "delims=" %a in ('yt-dlp --skip-download --get-url https://www.youtube.com/watch?v=-d4rS1lFzTQ') do ffmpeg -y -i "%a" -vf fps=1 output_%03d.png
+
+Yotube video url needs to be quoted to avoid interfereing!
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps 1 output-%09d.png
+
+This version solves issues with it interpreting the frame rate as part of the filename
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps=1 output-%09d.png
+
+Let's try this to read a frame every 10 seconds 
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps=1/10 output-%09d.png
