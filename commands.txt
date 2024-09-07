@@ -32,3 +32,7 @@ for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.
 
 Let's try this to read a frame every 10 seconds 
 for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps=1/10 output-%09d.png
+
+THi should do it without leading zeroes
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps=1/1 output-%d.png
