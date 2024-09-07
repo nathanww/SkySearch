@@ -36,3 +36,11 @@ for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.
 THi should do it without leading zeroes
 
 for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf fps=1/1 output-%d.png
+
+THis command also forces the images to be no bigger than 640x480
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf "fps=1/1,scale=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" output-%d.png
+
+DO all of this and sample no more frequently than once every 60 seconds
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf "fps=1/60,scal
+e=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" output-%d.png
