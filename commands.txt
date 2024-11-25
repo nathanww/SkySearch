@@ -44,3 +44,16 @@ DO all of this and sample no more frequently than once every 60 seconds
 
 for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf "fps=1/60,scal
 e=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" output-%d.png
+
+Once every 10 seconds appears to work better
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf "fps=1/10,scale=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" output-%d.png
+
+las vegas url
+
+https://www.youtube.com/watch?v=uqAOqAB0slI
+
+
+#this command does output using the current date and time
+
+for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "https://www.youtube.com/watch?v=-d4rS1lFzTQ"') do ffmpeg -y -i "%a" -vf "fps=1/10,scale=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" -strftime 1 "webcamname_%Y-%m-%d_%H-%M-%S.png"
