@@ -39,7 +39,7 @@ def generate_text(prompt,im1,im2,model="llava"):
 
 def examineFiles(im1,im2):
 
-    prompt = ''''Use less than 10 words to describe any aircraft or unusual phenomena present in the sky in these photos. If there are no unusual aircraft or phenomena, say NONE. The second photo is 10 seconds after the first photo so you can tell how things are moving. Describe ONLY things in the sky and nothing else.'''
+    prompt = ''''Use less than 10 words to describe any aircraft or unusual phenomena present in the sky in these photos. If there are no unusual aircraft or phenomena, say NONE. The second photo is 30 seconds after the first photo so you can tell how things are moving. Describe ONLY things in the sky and nothing else.'''
     #prompt="describe these images"
 
     print("Waiting for llava result")
@@ -69,7 +69,7 @@ while True:
                        im2=image_to_b64(newfile)
                        print("Scanning "+  os.path.basename(file)+","+ os.path.basename(newfile))
                        result=examineFiles(im1,im2)
-                       if "NONE" not in result: #if llaava thinks there is something interesting, save that description and the images!
+                       if "none" not in result.lower(): #if llaava thinks there is something interesting, save that description and the images!
                            outFile=open(os.path.basename(file).replace(".png",".txt"),'w')
                            outFile.write(result)
                            outFile.flush()
