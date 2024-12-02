@@ -1,3 +1,4 @@
 Chicago,https://www.youtube.com/watch?v=-d4rS1lFzTQ
 lasvegas,https://www.youtube.com/watch?v=uqAOqAB0slI
 pendaries,https://www.youtube.com/watch?v=bXoyB8Y4R7M
+malaga,https://www.youtube.com/watch?v=A6R81wOlQqs

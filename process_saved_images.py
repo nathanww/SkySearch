@@ -5,6 +5,7 @@ import base64
 from io import BytesIO
 import glob
 import os
+import time
 def image_to_b64(imagePath):
     image = Image.open(imagePath)
 
@@ -39,7 +40,7 @@ def generate_text(prompt,im1,im2,model="llava"):
 
 def examineFiles(im1,im2):
 
-    prompt = ''''Use less than 10 words to describe any aircraft or unusual phenomena present in the sky in these photos. If there are no unusual aircraft or phenomena, say NONE. The second photo is 30 seconds after the first photo so you can tell how things are moving. Describe ONLY things in the sky and nothing else.'''
+    prompt = ''''Use less than 10 words to describe any aircraft or unusual phenomena present in the sky in these photos.  Very Important: If there are no unusual aircraft or phenomena, say NONE it is critical that you do this). The second photo is 30 seconds after the first photo so you can tell how things are moving. Describe ONLY things in the sky and nothing else.'''
     #prompt="describe these images"
 
     print("Waiting for llava result")
@@ -78,9 +79,9 @@ while True:
                             os.remove(file)
                        break
         print("Finished, checking for new files!")
-        time.sleep(5)
+        time.sleep(1)
     except Exception as e:
-        print("Error occurred "+e)
+        print("Error occurred "+str(e))
         time.sleep(5)
         
            
