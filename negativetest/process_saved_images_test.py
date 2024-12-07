@@ -68,7 +68,6 @@ while True:
     try:
         # Get a list of all files in the folder
         files = glob.glob(os.path.join(os.getcwd(), '*.png'))
-        files = glob.glob(os.path.join(os.getcwd(), '/negativetest/*.png')) #can tell it to rpcoess the files in the negativetest or positivetest folder
         print(str(files))
         # Sort files by creation date
         files.sort(key=lambda x: os.path.getctime(x))
@@ -87,11 +86,11 @@ while True:
                        im2=image_to_b64(newfile)
                        print("Scanning "+  os.path.basename(file)+","+ os.path.basename(newfile))
                        result=examineFiles(im1,im2)
-                       isUnusual=classify_desc("Say YES if this description contains anything that might be considered unusual or atypical. Say NO if it does not. Do not generate any other commentary.:"+result)
+                       isUnusual=classify_desc("Read the description below and say DETECT if it describes at least slightly unusual aircraft or at least slightly unusual unusual phenomena present in the sky . Say NODETECT if there are no unusual aircraft or unusual phenomena present in the sky. :\n"+result)                       
                        print(isUnusual)
                        print(result)
                         
-                       if "yes" in isUnusual.lower(): #if llaava thinks there is something interesting, save that description and the images!
+                       if "nodetect" not in isUnusual.lower(): #if llaava thinks there is something interesting, save that description and the images!
                            outFile=open(os.path.basename(file).replace(".png",".txt"),'w')
                            outFile.write(result)
                            outFile.flush()
