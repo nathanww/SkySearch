@@ -37,10 +37,26 @@ def generate_text(prompt,im1,im2,model="llava"):
         return f"Error: {response.status_code}, {response.text}"
 
 
+def classify_desc(prompt,model="llava"):
+    url = "http://localhost:11434/api/generate"
+    
+    data = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False,
+    }
 
+    response = requests.post(url, json=data)
+    
+    if response.status_code == 200:
+        result = response.json()
+        return result["response"]
+    else:
+        return f"Error: {response.status_code}, {response.text}"
+        
 def examineFiles(im1,im2):
 
-    prompt = ''''Use less than 10 words to describe any aircraft or unusual phenomena present in the sky in these photos.  Very Important: If there are no unusual aircraft or phenomena, say NONE it is critical that you do this). The second photo is 30 seconds after the first photo so you can tell how things are moving. Describe ONLY things in the sky and nothing else.'''
+    prompt = ''''describe any unusual aircraft or unusual phenomena present in the sky in these photos. It is critical that you accurately describe any possibly unusual phenomena. The second photo is 30 seconds after the first photo so you can tell how things are moving. If an object is moving unusually, make sure to note this. Describe ONLY things in the sky and nothing else. '''
     #prompt="describe these images"
 
     print("Waiting for llava result")
@@ -70,13 +86,18 @@ while True:
                        im2=image_to_b64(newfile)
                        print("Scanning "+  os.path.basename(file)+","+ os.path.basename(newfile))
                        result=examineFiles(im1,im2)
-                       if "none" not in result.lower(): #if llaava thinks there is something interesting, save that description and the images!
+                       isUnusual=classify_desc("Say YES if this description contains anything that might be considered unusual or atypical. Say NO if it does not. Do not generate any other commentary.:"+result)
+                       print(isUnusual)
+                       print(result)
+                        
+                       if "yes" in isUnusual.lower(): #if llaava thinks there is something interesting, save that description and the images!
                            outFile=open(os.path.basename(file).replace(".png",".txt"),'w')
                            outFile.write(result)
                            outFile.flush()
                            outFile.close()
                        else: #otherwise, remove the file to save space
                             os.remove(file)
+                            
                        break
         print("Finished, checking for new files!")
         time.sleep(1)
