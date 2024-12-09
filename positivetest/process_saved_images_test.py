@@ -56,7 +56,7 @@ def classify_desc(prompt,model="llava"):
         
 def examineFiles(im1,im2):
 
-    prompt = ''''describe any unusual aircraft or unusual phenomena present in the sky in these photos. It is critical that you accurately describe any possibly unusual phenomena. The second photo is 30 seconds after the first photo so you can tell how things are moving. If an object is moving unusually, make sure to note this. Describe ONLY things in the sky and nothing else. '''
+    prompt = ''''describe any unusual aircraft or unusual phenomena present in the sky in these photos. CRITICAL: do not describe anything that is not in the sky. It is CRITICAL you accurately describe any possibly unusual phenomena in the sky (only). The second photo is 30 seconds after the first photo so you can tell how things are moving. If an object is moving unusually, make sure to note this. Describe ONLY things in the sky and nothing else. Do not speculate about the things you observe.'''
     #prompt="describe these images"
 
     print("Waiting for llava result")
@@ -101,7 +101,7 @@ while True:
                             pass
                        break
         print("Finished, checking for new files!")
-        time.sleep(1)
+        time.sleep(100000)
     except Exception as e:
         print("Error occurred "+str(e))
         time.sleep(5)
