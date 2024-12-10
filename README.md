@@ -1,5 +1,6 @@
 # SkySearch--detecting UAPs in public webcam streams
  SkySearch is a utility to survey public webcam feeds with a view of the sky to detect and flag potential unidentified aerial phenomena (UAPs). It includes utilities for streaming data from webcams and performing real-time analysis to identify interesting frames.
+ 
  #Purpose and scope
  There is increasing scientific interest in UAPs, which would be aided by systematically collecting data on their behavior (eg the question of whether some types of UAPs more frequently appear around military bases could shed light on their nature). However, most observations of UAPs are observations of opportunity; it is therefore difficult to tell whether the trends encountered in UAP observations reflect actual pattersn of activity or patterns of bias in which phenomena are observed and documented.
  
