@@ -1,7 +1,7 @@
 # SkySearch--detecting UAPs in public webcam streams
  SkySearch is a utility to survey public webcam feeds with a view of the sky to detect and flag potential unidentified aerial phenomena (UAPs). It includes utilities for streaming data from webcams and performing real-time analysis to identify interesting frames.
  
- #Purpose and scope
+ # Purpose and scope
  There is increasing scientific interest in UAPs, which would be aided by systematically collecting data on their behavior (eg the question of whether some types of UAPs more frequently appear around military bases could shed light on their nature). However, most observations of UAPs are observations of opportunity; it is therefore difficult to tell whether the trends encountered in UAP observations reflect actual pattersn of activity or patterns of bias in which phenomena are observed and documented.
  
  To address this project; SkySearch can take data from always-on, sky-observing webcams which can be selected to evenly sample different types of environment. A multimodal LLM processes the images from these streams and identifies potentially unsual aerial phenomena for further analysis.
@@ -11,14 +11,17 @@
  
  # Requirements
  Python 3.10
+ 
 	Pillow
+ 
  Ollama with the LLava 7b vision model 
+ 
  ffmpeg
  
  SkySearch is currently designed to run on windows but should eb adaptable to other platforms with some changes to the shell commands.
  
  
- #Running
+ # Running
  1. Install FFMPEG, Ollama, LLaVA, and Pillow
  2. Start Ollama
  3. Specify webcams you want the system to look at in the webcams.txt file. Each line of the file contains a human-readable webcam name and the URL containing a Youtube link to the webcam
