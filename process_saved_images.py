@@ -71,10 +71,11 @@ while True:
         print(str(files))
         # Sort files by creation date
         files.sort(key=lambda x: os.path.getctime(x))
-
+        preserveFile=""
         # Iterate through the sorted files
         for filen in range(0,len(files)):
            file=files[filen]
+          
            textFileExists=os.path.isfile(str(file).replace(".png",".txt")) #if this file already has a text file with findings, then ignore it. But if it doesn't, process it.
            if not textFileExists:
                print("Reading "+str(file))
@@ -95,8 +96,14 @@ while True:
                            outFile.write(result)
                            outFile.flush()
                            outFile.close()
-                       else: #otherwise, remove the file to save space
-                            os.remove(file)
+                           preserveFile=webcamid
+                           
+                           
+                       else: 
+                            if webcamid in preserveFile: #if this is the last image after an interesting one from the same webcam, preserve it
+                                preserveFile=""
+                            else:
+                                os.remove(file)
                        break
         print("Finished, checking for new files!")
         time.sleep(1)
