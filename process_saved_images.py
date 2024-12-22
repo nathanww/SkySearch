@@ -56,7 +56,7 @@ def classify_desc(prompt,model="llava"):
         
 def examineFiles(im1,im2):
 
-    prompt = ''''describe any unusual aircraft or unusual phenomena present in the sky in these photos. CRITICAL: do not describe anything that is not in the sky. It is CRITICAL you accurately describe any possibly unusual phenomena in the sky (only). The photo on the right is 60 seconds after the photo on the left so you can tell how things are moving. If an object is moving unusually, make sure to note this. Describe ONLY things in the sky and nothing else. Do not speculate about the things you observe. Ignore any text or watermarks on the image.'''
+    prompt = ''''describe any unusual aircraft or unusual phenomena present in the sky in these photos. CRITICAL: do not describe anything that is not in the sky. It is CRITICAL you accurately describe any possibly unusual phenomena in the sky (only). The photo on the right is 60 seconds after the photo on the left so you can tell how things are moving. If an object is moving unusually, make sure to note this. Describe ONLY things in the sky and nothing else. Do not speculate about the things you observe. Ignore any text or watermarks on the image. Use less than 6 words if you don't see anything unusual.'''
     #prompt="describe these images"
 
     print("Waiting for llava result")
@@ -87,7 +87,7 @@ while True:
                        im2=image_to_b64(newfile)
                        print("Scanning "+  os.path.basename(file)+","+ os.path.basename(newfile))
                        result=examineFiles(im1,im2)
-                       isUnusual=classify_desc("Read the description below and say DETECT if it describes at least slightly unusual aircraft or at least slightly unusual unusual phenomena present in the sky . Say NODETECT if there are no unusual aircraft or unusual phenomena present in the sky. :\n"+result)                       
+                       isUnusual=classify_desc("Read the description below and say DETECT if it describes at least slightly unusual aircraft or at least slightly unusual unusual phenomena present in the sky . Say NODETECT and nothing else if there are no unusual aircraft or unusual phenomena present in the sky. :\n"+result)                       
                        print(isUnusual)
                        print(result)
                         
