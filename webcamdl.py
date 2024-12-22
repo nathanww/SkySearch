@@ -28,7 +28,7 @@ print("Stopping existing ffmpeg processes")
 # kill any existing instances of ffmpeg to avoid starting mutliple downloads of the same webcam
 kill_ffmpeg_processes()
 
-windows_command='''for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "webcamurl"') do ffmpeg -y -i "%a" -vf "fps=1/30,scale=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" -strftime 1 "webcamname_%Y-%m-%d_%H-%M-%S.png"'''
+windows_command='''for /f "delims=" %a in ('yt-dlp  --skip-download --get-url "webcamurl"') do ffmpeg -y -i "%a" -vf "fps=1/60,scale=640:-1:force_original_aspect_ratio=decrease,pad=640:480:-1:-1:color=black" -strftime 1 "webcamname_%Y-%m-%d_%H-%M-%S.png"'''
 def startDL(cam):
     split=cam.split(",")
     procs.append(subprocess.Popen(windows_command.replace("webcamname",split[0]).replace("webcamurl",split[1]).replace("\n","").replace("\r",""), shell=True))

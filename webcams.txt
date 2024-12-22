@@ -1,4 +1,11 @@
 Chicago,https://www.youtube.com/watch?v=-d4rS1lFzTQ
 lasvegas,https://www.youtube.com/watch?v=uqAOqAB0slI
 pendaries,https://www.youtube.com/watch?v=bXoyB8Y4R7M
-malaga,https://www.youtube.com/watch?v=A6R81wOlQqs
+boston,https://www.youtube.com/watch?v=RManbLSTXuc
+newjersey,https://www.youtube.com/watch?v=ptm4b0t3sOs
+newjersey2,https://www.youtube.com/watch?v=GWYlKeN5WIY
+surfcitynj, https://www.youtube.com/watch?v=4l_9V-uao1Q
+avalonnj,https://www.youtube.com/watch?v=vsmVTKC849I
+seagirtnj,https://www.youtube.com/watch?v=Ad7QhKLnuik
+shipbottomnj,https://www.youtube.com/watch?v=TQ8LY3tmjVM
+sandiego,https://www.youtube.com/watch?v=ED5fI1ZFHvo
