@@ -14,11 +14,11 @@
  
 	Pillow
  
- Ollama with the LLava 7b vision model 
+ Ollama with the LLava 7b vision model and LLAMA 3
  
  ffmpeg
  
- SkySearch is currently designed to run on windows but should eb adaptable to other platforms with some changes to the shell commands.
+ SkySearch is currently designed to run on windows but should be adaptable to other platforms with some changes to the shell commands.
  
  
  # Running
